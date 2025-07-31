@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "A simple Ruby wrapper for WeasyPrint HTML to PDF converter"
   spec.description = "WeasyRb provides a clean and simple Ruby interface to the " \
                      "WeasyPrint Python library for converting HTML documents to PDF files."
-  spec.homepage = "https://github.com/Rynaro/weasy_rb"
+  spec.homepage = "https://github.com/electionbuddy/weasy_rb"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
