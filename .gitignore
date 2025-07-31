@@ -1,0 +1,14 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# Docker
+.docker-volumes/
+
+# Example outputs (keep the scripts)
+examples/*.pdf

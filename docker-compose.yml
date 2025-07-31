@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  weasy_rb:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment:
+      - BUNDLE_PATH=/usr/local/bundle
+    working_dir: /app
+    command: bash
+    stdin_open: true
+    tty: true
+
+  # Service for running tests
+  test:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment:
+      - BUNDLE_PATH=/usr/local/bundle
+    working_dir: /app
+    command: bash -c "bundle install && bundle exec rake test"
+
+  # Service for running console/development
+  console:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment:
+      - BUNDLE_PATH=/usr/local/bundle
+    working_dir: /app
+    command: bash -c "bundle install && bin/console"
+    stdin_open: true
+    tty: true
+
+volumes:
+  bundle_cache:

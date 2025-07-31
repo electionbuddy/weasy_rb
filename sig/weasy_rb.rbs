@@ -1,0 +1,37 @@
+module WeasyRb
+  VERSION: String
+  
+  class Error < StandardError
+  end
+  
+  class CommandError < Error
+  end
+  
+  class ConversionError < Error
+  end
+  
+  def self.html_to_pdf: (String html, String output_path, ?Hash[Symbol, untyped] options) -> String
+  
+  class Converter
+    def initialize: (?command_builder: CommandBuilder, ?executor: Executor) -> void
+    def convert: (String html, String output_path, ?Hash[Symbol, untyped] options) -> String
+  end
+  
+  class CommandBuilder
+    WEASY_PRINT_COMMAND: String
+    def build: (String output_path, ?Hash[Symbol, untyped] options) -> Array[String]
+  end
+  
+  class Executor
+    class Result
+      attr_reader success?: bool
+      attr_reader output: String
+      attr_reader error: String
+      attr_reader exit_status: Integer?
+      
+      def initialize: (success: bool, ?output: String, ?error: String, ?exit_status: Integer?) -> void
+    end
+    
+    def execute: (Array[String] command, String html_content) -> Result
+  end
+end
